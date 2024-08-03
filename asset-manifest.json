@@ -1,28 +1,26 @@
 {
   "files": {
     "main.css": "/movies/static/css/main.41bea83a.css",
-    "main.js": "/movies/static/js/main.ae1fd96d.js",
+    "main.js": "/movies/static/js/main.36f94dde.js",
     "static/media/login.jpg": "/movies/static/media/login.bcbd4d259b798fece06d.jpg",
     "static/media/GodzillaxKongTheNewEmpire.jpg": "/movies/static/media/GodzillaxKongTheNewEmpire.b00e9524644bdb993891.jpg",
     "static/media/Inception.jpg": "/movies/static/media/Inception.7cfd7e1266da7ea3484d.jpg",
     "static/media/TheMatrix.jpg": "/movies/static/media/TheMatrix.8f2c06ac04b43967846c.jpg",
     "static/media/FuriosaAMadMaxSaga.jpg": "/movies/static/media/FuriosaAMadMaxSaga.892dbc182698219c5921.jpg",
     "static/media/TheDarkKnight.jpg": "/movies/static/media/TheDarkKnight.f4f3218f27bdc5256846.jpg",
-    "static/media/error404.gif": "/movies/static/media/error404.c08b802eb22ee51a6aef.gif",
     "static/media/Deadpool&Wolverine.jpg": "/movies/static/media/Deadpool&Wolverine.353549490e431d3224e6.jpg",
     "static/media/ForrestGump.jpg": "/movies/static/media/ForrestGump.889ef64cf23064554e5f.jpg",
     "static/media/DespicableMe4.jpg": "/movies/static/media/DespicableMe4.214092fa6f526d348a3e.jpg",
     "static/media/TheGodfather.jpg": "/movies/static/media/TheGodfather.198487f3914c5d1e575a.jpg",
-    "static/media/loading.gif": "/movies/static/media/loading.7580caac33c5a275e50d.gif",
     "static/media/TheShawshankRedemption.jpg": "/movies/static/media/TheShawshankRedemption.579e6738184d9c4217a0.jpg",
     "static/media/PulpFiction.jpg": "/movies/static/media/PulpFiction.d257354afe93d507c223.jpg",
     "static/media/TheSilenceoftheLambs.jpg": "/movies/static/media/TheSilenceoftheLambs.ae98f2af6809ce259d73.jpg",
     "index.html": "/movies/index.html",
     "main.41bea83a.css.map": "/movies/static/css/main.41bea83a.css.map",
-    "main.ae1fd96d.js.map": "/movies/static/js/main.ae1fd96d.js.map"
+    "main.36f94dde.js.map": "/movies/static/js/main.36f94dde.js.map"
   },
   "entrypoints": [
     "static/css/main.41bea83a.css",
-    "static/js/main.ae1fd96d.js"
+    "static/js/main.36f94dde.js"
   ]
 }
