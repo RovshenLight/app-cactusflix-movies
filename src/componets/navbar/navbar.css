@@ -132,6 +132,38 @@
   color: #fff;
 }
 
+.search-results {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  background: linear-gradient(308deg, rgb(29, 70, 8) 0%, rgb(70, 80, 23) 52%, rgb(84, 76, 40) 100%);
+  width: 240px;
+  height: 300px;
+  overflow-y: scroll;
+  transform: translateY(10px);
+  border-color:#cccccc; font-size:16px; padding:7px; border-radius:2px; border-width:3px; border-style:ridge;
+  color:#ffffff; box-shadow:inset 0px 0px 8px 0px rgba(98, 95, 95, 0.74); text-shadow:1px -2px 0px rgba(255, 255, 255, 0.2); 
+  transition: all 0.4s;
+}
+
+.search-results ul {
+  display: inline-flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.search-results ul li {
+  width: 100%;
+  padding: 6px;
+  margin: 1px 2px;
+  background-color: black;
+  border-radius: 5px;
+  border-color:#cccccc; font-size:16px; padding:7px; border-radius:10px; border-width:3px; border-style:ridge;
+  color:#ffffff; box-shadow:inset 0px 0px 8px 0px rgba(98, 95, 95, 0.74); text-shadow:1px -2px 0px rgba(255, 255, 255, 0.2); 
+  transition: all 0.4s;
+  transform: translateY(25px);
+}
+
 .right {
   display: flex;
   align-items: center;
@@ -469,7 +501,6 @@
   .mobile svg {
     cursor: url('../../assets/NeonLinkSelectGreen.jpg'), auto;
      color: rgb(185, 213, 128);
-    font-size: 1.5rem;
     margin-left: 1rem;
     animation: myAnim2 2s ease 0s 1 normal forwards;
   }

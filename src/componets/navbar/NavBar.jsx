@@ -8,6 +8,7 @@ import { IoClose, IoMenu } from "react-icons/io5";
 import { Link } from 'react-router-dom'
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min'
 import CTA from '../CTA/CTA'
+import moviesexport from '../export/moviesexport'
 
 const NavBar = () => {
 
@@ -17,6 +18,8 @@ const NavBar = () => {
   const [search, setSearch] = useState(false);
   const [alert, setAlert] = useState(false);
   const [stickyClass, setStickyClass] = useState('');
+  const [searchInput, setSearchInput] = useState('');
+  const [filteredMovies, setFilteredMovies] = useState([]);
 
   useEffect(() => {
     window.addEventListener('scroll', stickNavbar);
@@ -35,6 +38,17 @@ const NavBar = () => {
 
   const handleLogout = () => {
     history.push('/login');
+  };
+
+
+  const handleSearch = (e) => {
+    const query = e.target.value.toLowerCase();
+    setSearchInput(query);
+
+    const filtered = moviesexport().filter(movie => 
+      movie.movie_name.toLowerCase().includes(query)
+    );
+    setFilteredMovies(filtered);
   };
 
   return (
@@ -56,7 +70,18 @@ const NavBar = () => {
           {search ?  <BiSearch onClick={() => setSearch(false)} /> : <BiSearch onClick={() => setSearch(true)} />}
           {search && (
             <div className='right-search scale-in-top'>
-              <input type="search" name="search" id="search" placeholder='Search' />
+              <input type="search" name="search" id="search" placeholder='Search' value={searchInput} onChange={handleSearch} />
+              {filteredMovies.length > 0 && (
+                <div className="search-results">
+                  <ul>
+                    {filteredMovies.map((result) => (
+                      <li key={result.id}>  
+                        <Link to={`/movie/${result.id}`}><Link to='/Watch'>{result.movie_name}</Link></Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
             </div>
           )}
           {alert ? <BiBell onClick={() => setAlert(false)} /> : <BiBell onClick={() => setAlert(true)} />}

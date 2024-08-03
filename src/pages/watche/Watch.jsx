@@ -7,7 +7,7 @@ const Watch = () => {
   return (
     <div className='watch'>
       <div className="backtohome">
-        <Link href="/">
+        <Link to="/">
           <BsArrowReturnLeft className='watch__icon' />
         </Link>
           Home    

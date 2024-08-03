@@ -6,22 +6,22 @@ import { BiLike } from 'react-icons/bi'
 import { BiDislike } from 'react-icons/bi'
 import imgPoster from '../../assets/image/imagedata'
 
-
-
-
 const ListParts = ({index, movie}) => {
 
-  
   const [isHover, setIsHover] = useState(false);
   const posters = imgPoster();
   const moviePoster = posters[index] || {};
+  const handleClick = () => {
+    setIsHover((prev) => !prev);
+  };
+
 
   return (
     
-    <div className='listparts' 
-    onMouseEnter={() => setIsHover(true)}
-    onMouseLeave={() => setIsHover(false)}
-    style={{left: isHover && index * 255 - 40 + index * 2.5}}
+    <div 
+    onClick={handleClick}
+    className={`listparts ${isHover ? 'active' : ''}`}
+    style={{left: isHover && index * 250 - 50 + index * 2.5}}
     >
     <img src={moviePoster.img} alt={moviePoster.img} />
       {isHover && (

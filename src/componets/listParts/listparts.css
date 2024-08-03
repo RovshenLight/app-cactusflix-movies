@@ -27,16 +27,17 @@
   border-top-left-radius: 5px;
 }
 
-.listparts:hover {
+.listparts.active {
   height: 180px;
   width: 425px;
   box-shadow: 0 2px 15px 0px rgb(185, 213, 128);
   position: absolute;
   top: -150px;
   border-radius: 3rem;
+  position: absolute; 
   } 
 
-  .listparts img:hover {
+  .listparts img.active {
     height: 140px;
  
   } 
@@ -155,7 +156,8 @@
     margin: 0 auto;
   }
   
-  .listparts:hover {
+  .listparts.active {
+    transform: translateX(100px);
     height: 100px;
     width: 245px;
    margin: 0 auto;
