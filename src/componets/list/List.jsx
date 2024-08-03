@@ -33,16 +33,16 @@ const List = ({dat }) => {
   }
 
   const handleTouchStart = (e) => {
-    startX = e.touches[0].pageX - listRef.current.offsetLeft;
+    startX = e.touches[0].pageX;
     scrollLeft = listRef.current.scrollLeft;
   };
 
   const handleTouchMove = (e) => {
-    const x = e.touches[0].pageX - listRef.current.offsetLeft;
-    const walk = (x - startX) * 2; //scroll-fast
+    const x = e.touches[0].pageX;
+    const walk = (x - startX) * 2; // scroll-fast
     listRef.current.scrollLeft = scrollLeft - walk;
   };
-
+  
   return (
 
     <div className='list'>
