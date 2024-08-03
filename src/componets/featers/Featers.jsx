@@ -7,10 +7,10 @@ import Select from 'react-select';
 import { useState } from 'react';
 import imgPoster from '../../assets/image/imagedata'
 import moviesexport from '../export/moviesexport'
+import { useEffect } from 'react'
 
-const Featers = ({ type, setGenre}) => {
+const Featers = ({ type, setGenre, interval = 3000}) => {
 
-  const [isPending, setIsPending] = useState(true);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [posters, setPosters] = useState(imgPoster());
   const [selectedOption, setSelectedOption] = useState(null);
@@ -22,6 +22,13 @@ const Featers = ({ type, setGenre}) => {
   const handlePrevious = () => {
     setCurrentIndex((prevIndex) => (prevIndex - 1 + posters.length) % posters.length);
   };
+
+  useEffect(() => {
+    const autoPlayInterval = setInterval(handleNext, interval);
+    return () => {
+      clearInterval(autoPlayInterval);
+    };
+  }, [interval, handleNext]);
 
   const options = [
     { value: 'comedy', label: 'Comedy'},
