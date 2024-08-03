@@ -6,13 +6,11 @@ import { BsChevronBarDown } from 'react-icons/bs'
 import { BsChevronBarUp } from 'react-icons/bs'
 import { IoClose, IoMenu } from "react-icons/io5";
 import { Link } from 'react-router-dom'
-import { useAuth } from '../../AuthContext/AuthContext';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min'
 import CTA from '../CTA/CTA'
 
 const NavBar = () => {
-  
-  const { logout } = useAuth();
+
   const history = useHistory();
   const [dropDown, setDropDown] = useState(false);
   const [toggleMenu, setToggleMenu] = useState(false);
@@ -36,8 +34,6 @@ const NavBar = () => {
   };
 
   const handleLogout = () => {
-    logout();
-    
     history.push('/login');
   };
 

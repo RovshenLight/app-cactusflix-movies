@@ -4,28 +4,10 @@ import { BiChevronRight } from 'react-icons/bi'
 import { BiChevronLeft } from 'react-icons/bi'
 import ListParts from '../listParts/ListParts'
 import { useRef } from 'react'
-import { useEffect } from 'react'
-import useFetch from '../usefetch/useFetch'
-import loanding from '../../assets/loading.gif'
-import error404 from '../../assets/error404.gif'
+import moviesexport from '../export/moviesexport'
 
 const List = ({dat }) => {
-      
-  const { data: movies, error, isPending } = useFetch('http://localhost:7000/movies');
-
-  useEffect(() => {
-
-    setTimeout(() => {
-      
-      fetch('http://localhost:7000/movies', {
-        method: 'GET',
-        headers: {"Content-Type": "application/json"}
-      })
-
-    }, 1000);
-
-}, [])
-
+  const movies = moviesexport();
 
   const [slideList, setSlideList] = useState(0);
   const [whenMove, setWhenMove] = useState(false);
@@ -49,10 +31,6 @@ const List = ({dat }) => {
   return (
 
     <div className='list'>
-      <div className='list__alert'>
-        {error && <img className='list__error' src={error404} alt="Error" />}
-        {isPending && <img className='list__loanding' src={loanding} alt="Loanding..." />}
-      </div>
           {movies && (
             <div className='list__wrapper' key={dat.id}>
               <span className='list__title'>{dat.genre}</span>

@@ -2,32 +2,11 @@ import { Link } from 'react-router-dom/cjs/react-router-dom.min'
 import CTA from '../../componets/CTA/CTA'
 import './regist.css'
 import React, { useState } from 'react'
-import { useHistory } from 'react-router-dom/cjs/react-router-dom.min'
-import Cookies from 'js-cookie';
-
 const Regist = () => {
 
-  const history = useHistory();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    
-    const user = {email, password} 
-
-    fetch('http://localhost:8000/users', {
-      method: 'POST',
-      headers: {"Content-Type": "application/json"},
-      body: JSON.stringify(user)
-    })
-    .then(() => {
-      Cookies.set('user', email, { expires: 7 });
-      history.push('/Login')
-    })
-
-  }
 
   return (
     <div className='regist'>
@@ -44,12 +23,12 @@ const Regist = () => {
           <h1>Unlimidet movies, TV shows, and more.</h1>
           <h2>Watch anywhere. Cancel anytime.</h2>
           <p>Ready to watch? Enter your email to creat or restart your membership.</p>
-          <form className='input' onSubmit={handleSubmit}>
+          <form className='input'>
             <label>Sign Up</label>
               <input type="email" value={email} required placeholder='email address' onChange={(e) => setEmail(e.target.value)} />
               <input type="password" placeholder='password'value={password} required onChange={(e) => setPassword(e.target.value)} />
               <button className='regist__button'>
-                <CTA a='St' b='a' c='rt'/>
+               <Link to='/Login'><CTA a='St' b='a' c='rt'/></Link>
               </button>
           </form>
         </div>

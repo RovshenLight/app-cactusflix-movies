@@ -1,5 +1,4 @@
-{
-  "movies": [
+const moviesexport = () => [
     {
       "id": 1,
       "movie_name": "The Dark Knight",
@@ -9,7 +8,7 @@
       "description": "When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, Batman must accept one of the greatest psychological and physical tests of his ability to fight injustice.",
       "ratings": 9,
       "genre": "Fantasy",
-      "poster": "process.env.PUBLIC_URL + 'TheMatrix.jpg'",
+      "poster": "https://www.imdb.com/title/tt0110912/mediaviewer/rm1126166785/",
       "release_date": "2008-07-18",
       "runtime": 152
     },
@@ -157,4 +156,5 @@
       "runtime": 94
     }
   ]
-}
+
+export default moviesexport

@@ -5,16 +5,12 @@ import { BsInfo } from 'react-icons/bs'
 import CTA from '../CTA/CTA'
 import Select from 'react-select';
 import { useState } from 'react';
-import { useEffect } from 'react'
-import loanding from '../../assets/loading.gif'
-import error404 from '../../assets/error404.gif'
 import imgPoster from '../../assets/image/imagedata'
+import moviesexport from '../export/moviesexport'
 
 const Featers = ({ type, setGenre}) => {
 
-  const [data, setData] = useState(null);
   const [isPending, setIsPending] = useState(true);
-  const [error, setError] = useState(null);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [posters, setPosters] = useState(imgPoster());
   const [selectedOption, setSelectedOption] = useState(null);
@@ -26,36 +22,6 @@ const Featers = ({ type, setGenre}) => {
   const handlePrevious = () => {
     setCurrentIndex((prevIndex) => (prevIndex - 1 + posters.length) % posters.length);
   };
-
-  useEffect(() => {
-    const abortCont = new AbortController();
-
-  setTimeout(() => {
-    
-    fetch('http://localhost:7000/movies', {signal: abortCont.signal})
-    .then((res) => {
-      if(!res.ok) {
-        throw Error('You Foggot to conecte to port!!! Tip: npx json-server --watch date/date.json --port 8000 and 7000 ');
-      }
-      return res.json();
-    })
-    .then((data) => {
-      setData(data);
-      setIsPending(false);
-    })
-    .catch((err) => {
-      if(err.name === 'AboretError') {
-        console.log('Cleaned');
-      } else {
-        setIsPending(false);
-        setError(err.massage);
-      }
-    })
-
-  }, 1000);
-
-  return () => abortCont.abort();
- }, []);
 
   const options = [
     { value: 'comedy', label: 'Comedy'},
@@ -108,6 +74,8 @@ const Featers = ({ type, setGenre}) => {
     })
   };
   
+  const movies = moviesexport();
+
   return (
     <div className="featers">
       {type && (
@@ -124,22 +92,16 @@ const Featers = ({ type, setGenre}) => {
             />
         </div>
       )}
-      {isPending ||  
-      <>
       <button className='swipe' onClick={handlePrevious}><CTA elem={'⏴'} /></button>
       <img src={posters[currentIndex].img} alt="Gallery" />
-      <button className='swipe2' onClick={handleNext}><CTA elem={'⏵'}/></button>
-      </>
-      }     
+      <button className='swipe2' onClick={handleNext}><CTA elem={'⏵'}/></button>   
         <div className="featers__alert">
-        {error && <img className='featers__error' src={error404} alt="Error" />}
-        {isPending && <img className='featers__loanding' src={loanding} alt="Loanding..." />}
       </div> 
       <div className="desc">
-      {data && data[currentIndex] && (
+      {movies && movies[currentIndex] && (
           <>
-            <h6>{data[currentIndex].movie_name}</h6>
-            <p>{data[currentIndex].description}</p>
+            <h6>{movies[currentIndex].movie_name}</h6>
+            <p>{movies[currentIndex].description}</p>
           </>
         )}
       <div className="featers__btn">
