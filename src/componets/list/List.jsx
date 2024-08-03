@@ -8,61 +8,62 @@ import moviesexport from '../export/moviesexport'
 
 const List = ({dat }) => {
   const movies = moviesexport();
-
-  const [slideList, setSlideList] = useState(0);
-  const [whenMove, setWhenMove] = useState(false);
-  const [clickLimit, setClickLimit] = useState(window.innerWidth / 230);
   const listRef = useRef();
+  const [slideList, setSlideList] = useState(0);
+  const [startX, setStartX] = useState(0);
+  const [scrollLeft, setScrollLeft] = useState(0);
 
-
-  let startX = 0;
-  let scrollLeft = 0;
-
-  const handleScroll = (direct) => {
-    setWhenMove(true);
-    let distance = listRef.current.getBoundingClientRect().x - 50;
-
-    if(direct === 'left' && slideList > 0) {
+  const handleScroll = (direction) => {
+    const distance = listRef.current.getBoundingClientRect().x - 50;
+    if (direction === 'left' && slideList > 0) {
       setSlideList(slideList - 1);
       listRef.current.style.transform = `translateX(${240 + distance}px)`;
     }
-    if(direct === 'right' && slideList < 10 - clickLimit ) {
+    if (direction === 'right' && slideList < 10 - window.innerWidth / 240) {
       setSlideList(slideList + 1);
-      listRef.current.style.transform = `translateX(${-230 + distance}px)`;
+      listRef.current.style.transform = `translateX(${-240 + distance}px)`;
     }
-  }
+  };
 
   const handleTouchStart = (e) => {
-    startX = e.touches[0].pageX;
-    scrollLeft = listRef.current.scrollLeft;
+    setStartX(e.touches[0].pageX);
+    setScrollLeft(listRef.current.scrollLeft);
   };
 
   const handleTouchMove = (e) => {
     const x = e.touches[0].pageX;
-    const walk = (x - startX) * 2; // scroll-fast
+    const walk = (x - startX) * 2; // Adjust scrolling speed
     listRef.current.scrollLeft = scrollLeft - walk;
   };
-  
-  return (
 
-    <div className='list'>
-          {movies && (
-            <div className='list__wrapper' key={dat.id}>
-              <span className='list__title'>{dat.genre}</span>
-                  <div className="wrapper">
-                      <BiChevronLeft className='list__svg left' onClick={() => handleScroll('left')} style={{display: !whenMove && 'none' }} />
-                      <div className="list__container" ref={listRef} onTouchStart={handleTouchStart} onTouchMove={handleTouchMove}>
-                        {movies.map((movie, index) => (
-                          <>
-                          <ListParts index={index} movie={movie}/>
-                          </>
-                        ))}
-                  </div>
-              <BiChevronRight className='list__svg right' onClick={() => handleScroll('right')} />
+  return (
+    <div className="list">
+    {movies && (
+      <div className="list__wrapper" key={dat.id}>
+        <span className="list__title">{dat.genre}</span>
+        <div className="wrapper">
+          <BiChevronLeft
+            className="list__svg left"
+            onClick={() => handleScroll('left')}
+          />
+          <div
+            className="list__container"
+            ref={listRef}
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+          >
+            {movies.map((movie, index) => (
+              <ListParts key={index} index={index} movie={movie} />
+            ))}
+          </div>
+          <BiChevronRight
+            className="list__svg right"
+            onClick={() => handleScroll('right')}
+          />
         </div>
       </div>
     )}
-    </div>
+  </div>
   )
 }
 
