@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/movies/static/css/main.3b3ada19.css",
-    "main.js": "/movies/static/js/main.d9e9117c.js",
+    "main.js": "/movies/static/js/main.4c912235.js",
     "static/media/login.jpg": "/movies/static/media/login.bcbd4d259b798fece06d.jpg",
     "static/media/GodzillaxKongTheNewEmpire.jpg": "/movies/static/media/GodzillaxKongTheNewEmpire.b00e9524644bdb993891.jpg",
     "static/media/Inception.jpg": "/movies/static/media/Inception.7cfd7e1266da7ea3484d.jpg",
@@ -17,10 +17,10 @@
     "static/media/TheSilenceoftheLambs.jpg": "/movies/static/media/TheSilenceoftheLambs.ae98f2af6809ce259d73.jpg",
     "index.html": "/movies/index.html",
     "main.3b3ada19.css.map": "/movies/static/css/main.3b3ada19.css.map",
-    "main.d9e9117c.js.map": "/movies/static/js/main.d9e9117c.js.map"
+    "main.4c912235.js.map": "/movies/static/js/main.4c912235.js.map"
   },
   "entrypoints": [
     "static/css/main.3b3ada19.css",
-    "static/js/main.d9e9117c.js"
+    "static/js/main.4c912235.js"
   ]
 }
